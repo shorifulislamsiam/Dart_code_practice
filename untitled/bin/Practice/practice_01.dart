@@ -20,8 +20,52 @@ class person implements Role{
   set Address(person_address){
     _address =person_address;
   }
-
+  displayRole(){
+    print("I am a person");
+  }
 }
+class Students extends person{
+  int? studentID;
+  String ? grade;
+  List<int?> courseScores=[];
+  Students(String ? _name,int? _age,String ? _address,this.studentID,this.grade,this.courseScores):super(_name, _age,_address);
+
+  @override
+  displayRole(){
+    print("I am a student");
+  }
+
+  double? calculateAvarage(){
+    double total= 0;
+    double avarage;
+    for (var index in courseScores){
+      total += index!;
+    }
+    print("My total Score is: $total");
+    avarage = total / courseScores.length;
+    print("My total Score is: ${avarage.toStringAsFixed(2)}");
+    return null;
+  }
+}
+class Teacher extends person{
+  int ? teacherID;
+  var coursesTaught =[];
+  Teacher(String ? _name,int? _age,String ? _address, this.teacherID, this.coursesTaught ):
+      super(_name, _age, _address);
+
+  @override
+  displayRole(){
+    print("This is for Teacher");
+  }
+
+  void coursesExpertise(){
+    for (var courses in coursesTaught){
+      print("Expertise on $courses");
+    }
+  }
+  
+}
+
 void main(){
   // print("Enter your name:");
   // String? name = stdin.readLineSync();
@@ -32,10 +76,26 @@ void main(){
   // print("Enter your address:");
   // String? address = stdin.readLineSync();
 
+  print("<==============Object of person class=================>");
   person uperson = person("" ,22,"dhaka");
-  ;
+  uperson.displayRole();
   print(uperson.Name="siam");
   print(uperson.Age=22);
-  print(uperson.Address="d");
-
+  print(uperson.Address="Dhaka\n");
+  print("<================object of student class===============>");
+  Students ustudent = Students("Siam", 22, "Dhaka", 123, "A+", [100,97,100,100,96]);
+  ustudent.displayRole();
+  print("Student name is: ${ustudent._name}");
+  print("Student age is: ${ustudent._age}");
+  print("Student address is: ${ustudent._address}");
+  print("Student ID is: ${ustudent.studentID}");
+  print("Student grade is: ${ustudent.grade}");
+  print("Student scores are: ${ustudent.courseScores}");
+  ustudent.calculateAvarage();
+  //print("Avarage score is: ${ustudent.calculateAvarage()}");
+  print("<================object of teacher class===============>");
+  Teacher uteacher = Teacher("Md Toufiq ", 27, "Dhaka", 01, ["Laravel","Dart","Flutter","etc" ]);
+  print("My teacher's name is ${uteacher._name},\nand he is ${uteacher._age} years old.\nHis teacher's ID ${uteacher.teacherID} from ${uteacher._address}.");
+  //print("Teacher is expert on ${uteacher.coursesTaught}");
+  uteacher.coursesExpertise();
 }

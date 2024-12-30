@@ -59,7 +59,7 @@ print("Enter your name:");
   print(uperson.name);
   print(uperson.age);
   print(uperson.address);
-}*/
+}
 
 
 //B=> or/alternatives
@@ -87,9 +87,8 @@ class person implements Role{
   set Address(person_address){
     _address =person_address;
   }
-
-
 }
+
 void main(){
   // print("Enter your name:");
   // String? name = stdin.readLineSync();
@@ -104,4 +103,86 @@ void main(){
   print("The name of person is: ${uperson.personName}");
   print("The age is: ${uperson.personAge}");
   print("The address of this person is: ${uperson.personAddress}");
+}
+//B=> End*/
+
+//C => Start
+abstract class Role{
+
+}
+class person implements Role{
+  String ? _name;
+  int? _age;
+  String ? _address;
+  person(this._name, this._age, this._address);
+  String? get personName => _name;
+  int? get personAge => _age;
+  String? get personAddress => _address;
+  set Name(person_name){
+    _name =person_name;
+  }
+  set Age(person_age){
+    _age =person_age;
+  }
+  set Address(person_address){
+    _address =person_address;
+  }
+  displayRole(){
+    print("I am a person");
+  }
+}
+class Students extends person{
+  int? studentID;
+  String ? grade;
+  List<int?> courseScores=[];
+  Students(String ? _name,int? _age,String ? _address,this.studentID,this.grade,this.courseScores):super(_name, _age,_address);
+
+  @override
+  displayRole(){
+    print("I am a student");
+  }
+
+  double? calculateAvarage(){
+    double total= 0;
+    double avarage;
+    for (var index in courseScores){
+      total += index!;
+
+
+
+    }
+    print("My total Score is: $total");
+    avarage = total / courseScores.length;
+    print("My total Score is: ${avarage.toStringAsFixed(2)}");
+  }
+
+}
+void main(){
+  // print("Enter your name:");
+  // String? name = stdin.readLineSync();
+  //
+  // print("Enter your age:");
+  // int? age = int.tryParse(stdin.readLineSync()!);
+  //
+  // print("Enter your address:");
+  // String? address = stdin.readLineSync();
+
+  print("<==============Object of person class=================>");
+  person uperson = person("" ,22,"dhaka");
+  uperson.displayRole();
+  print(uperson.Name="siam");
+  print(uperson.Age=22);
+  print(uperson.Address="Dhaka\n");
+  print("<================object of student class===============>");
+  Students ustudent = Students("Siam", 22, "Dhaka", 123, "A+", [100,97,100,100,96]);
+  ustudent.displayRole();
+  print("Student name is: ${ustudent._name}");
+  print("Student age is: ${ustudent._age}");
+  print("Student address is: ${ustudent._address}");
+  print("Student ID is: ${ustudent.studentID}");
+  print("Student grade is: ${ustudent.grade}");
+  print("Student scores are: ${ustudent.courseScores}");
+  ustudent.calculateAvarage();
+  //print("Avarage score is: ${ustudent.calculateAvarage()}");
+
 }
