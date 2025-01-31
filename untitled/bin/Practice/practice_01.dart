@@ -67,21 +67,21 @@ class Teacher extends person{
 }
 
 void main(){
-  // print("Enter your name:");
-  // String? name = stdin.readLineSync();
-  //
-  // print("Enter your age:");
-  // int? age = int.tryParse(stdin.readLineSync()!);
-  //
-  // print("Enter your address:");
-  // String? address = stdin.readLineSync();
+  print("Enter your name:");
+  String? name = stdin.readLineSync();
+
+  print("Enter your age:");
+  int? age = int.tryParse(stdin.readLineSync()!);
+
+  print("Enter your address:");
+  String? address = stdin.readLineSync();
 
   print("<==============Object of person class=================>");
-  person uperson = person("" ,22,"dhaka");
+  person uperson = person(name ,age,address);
   uperson.displayRole();
-  print(uperson.Name="siam");
-  print(uperson.Age=22);
-  print(uperson.Address="Dhaka\n");
+  print(uperson.Name=name);
+  print(uperson.Age=age);
+  print(uperson.Address=address);
   print("<================object of student class===============>");
   Students ustudent = Students("Siam", 22, "Dhaka", 123, "A+", [100,97,100,100,96]);
   ustudent.displayRole();
